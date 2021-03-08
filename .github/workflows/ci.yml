@@ -1,4 +1,10 @@
-on: push
+on:
+  push:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
 name: ci
 jobs:
   check-clippy:
@@ -21,11 +27,19 @@ jobs:
           components: rustfmt
       - run: cargo fmt
 
-  build:
+  build-and-publish:
     runs-on: ubuntu-20.04
+    needs:
+      - check-clippy
+      - check-format
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
       - run: cargo build --release
+      - run: cargo publish --dry-run
+      - run: cargo publish --token ${{ secrets.CRATES_TOKEN }}
+        if: github.ref == 'refs/heads/main'
+        env:
+          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}

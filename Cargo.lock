@@ -51,15 +51,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cash"
-version = "0.1.0"
-dependencies = [
- "clap",
- "ignore",
- "sha2",
-]
-
-[[package]]
 name = "cfg-if"
 version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -329,6 +320,15 @@ dependencies = [
  "cpuid-bool",
  "digest",
  "opaque-debug",
+]
+
+[[package]]
+name = "shakshuka"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "ignore",
+ "sha2",
 ]
 
 [[package]]

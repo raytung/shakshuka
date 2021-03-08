@@ -1,4 +1,12 @@
-on: push
+on:
+  push:
+    branches:
+      - "!main"
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
 name: ci
 jobs:
   check-clippy:
@@ -21,7 +29,7 @@ jobs:
           components: rustfmt
       - run: cargo fmt
 
-  build:
+  build-and-publish:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -29,3 +37,8 @@ jobs:
         with:
           toolchain: stable
       - run: cargo build --release
+      - run: cargo publish --dry-run
+      - run: cargo publish
+        if: github.event.pull_request.merged && github.ref == 'refs/heads/main'
+        with:
+          token: ${{ secrets.CRATES_TOKEN }}

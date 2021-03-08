@@ -10,6 +10,10 @@ repository = "https://github.com/raytung/shakshuka"
 keywords = ["content hash", "SHA256", ".ignore", "utilities"]
 categories = ["command-line-utilities"]
 
+[[bin]]
+name = "shk"
+path = "src/main.rs"
+
 [dependencies]
 clap = "3.0.0-beta.2"
 ignore = "0.4.17"

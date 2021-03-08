@@ -1,6 +1,6 @@
 # Shashuka
 
-`shakshuka` is a CLI tool for calculating content hash with SHA-256.
+Shashuka (`shk`) is a CLI tool for calculating content hash with SHA-256.
 
 ## Features
 
@@ -28,6 +28,6 @@ drwxrwxr-x     -      - raytung raytung 22 Feb 21:30  src
    2   │ .contenthashignore
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-➜  simple-nodejs git:(main) shakshuka
+➜  simple-nodejs git:(main) shk
 6a244f061a8f06a9d1c0518f16afb0252ae7b6c5e28b772e5fa6459b9c930554
 ```

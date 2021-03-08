@@ -1,6 +1,7 @@
 # Shakshuka
 
-![build](https://github.com/raytung/shakshuka/actions/workflows/ci.yml/badge.svg)
+[![Build status](https://github.com/raytung/shakshuka/actions/workflows/ci.yml/badge.svg)](https://github.com/raytung/shakshuka/actions)
+[![Crates.io](https://img.shields.io/crates/v/shakshuka.svg)](https://crates.io/crates/shakshuka)
 
 Shakshuka (`shk`) is a CLI tool for calculating content hash with SHA-256.
 
@@ -12,8 +13,12 @@ Shakshuka (`shk`) is a CLI tool for calculating content hash with SHA-256.
 
 ## Installation
 
+The binary name for shakshuka is `shk`.
+
+If you have the **Rust** toolchains installed, shakshuka can be installed with `cargo`
+
 ```shell
-cargo install shakshuka
+$ cargo install shakshuka
 ```
 
 ## Example

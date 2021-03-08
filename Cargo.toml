@@ -4,11 +4,11 @@ authors = ["Ray Tung <code@raytung.net>"]
 description = "Simple command line tool for calculating content hash. Supports .ignore (.contenthashignore) file"
 edition = "2018"
 version = "0.1.0"
-license-file = "LICENSE"
 license = "Apache-2.0"
 readme = "README.md"
+homepage = "https://github.com/raytung/shakshuka"
 repository = "https://github.com/raytung/shakshuka"
-keywords = ["content-hash", "SHA256", "ignore", "utilities"]
+keywords = ["content-hash", "sha", "ignore", "hash"]
 categories = ["command-line-utilities"]
 
 [[bin]]

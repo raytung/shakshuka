@@ -1,0 +1,11 @@
+.gitignore
+.github
+.git
+README.md
+examples
+Makefile
+target
+Dockerfile
+LICENSE
+.dockerignore
+.idea

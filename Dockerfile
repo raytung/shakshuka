@@ -16,10 +16,8 @@ COPY --from=BUILD /opt/shakshuka/target/x86_64-unknown-linux-musl/release/shk ./
 
 ENTRYPOINT ["./shk"]
 
-FROM gcr.io/distroless/static-debian10
+FROM scratch
 
-WORKDIR /opt/shakshuka
+COPY --from=BUILD /opt/shakshuka/target/x86_64-unknown-linux-musl/release/shk /
 
-COPY --from=BUILD /opt/shakshuka/target/x86_64-unknown-linux-musl/release/shk ./shk
-
-ENTRYPOINT ["./shk"]
+ENTRYPOINT ["/shk"]

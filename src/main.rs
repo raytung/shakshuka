@@ -1,11 +1,11 @@
 use std::fs::read;
 
-use clap::Clap;
+use clap::Parser;
 use ignore::WalkBuilder;
 use sha2::{Digest, Sha256};
 
-#[derive(Clap)]
-#[clap(version = "0.1")]
+#[derive(Parser, Debug)]
+#[clap(version = "0.1.0")]
 struct Opts {
     #[clap(short, long)]
     verbose: bool,

@@ -5,7 +5,7 @@ use ignore::WalkBuilder;
 use sha2::{Digest, Sha256};
 
 #[derive(Parser, Debug)]
-#[clap(version = "0.1.0")]
+#[clap(about, version)]
 struct Opts {
     #[clap(short, long)]
     verbose: bool,
@@ -48,7 +48,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "{}  {}",
                 hash_str,
-                dir_entry.path().to_str().unwrap_or_else(|| ""),
+                dir_entry.path().to_str().unwrap_or(""),
             );
         }
 

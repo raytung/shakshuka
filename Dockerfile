@@ -1,4 +1,4 @@
-FROM library/rust:1.50.0-slim as BUILD
+FROM library/rust:1.57.0-slim as BUILD
 
 WORKDIR /opt/shakshuka
 

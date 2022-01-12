@@ -2,6 +2,7 @@
 
 [![Build status](https://github.com/raytung/shakshuka/actions/workflows/ci.yml/badge.svg)](https://github.com/raytung/shakshuka/actions)
 [![Crates.io](https://img.shields.io/crates/v/shakshuka.svg)](https://crates.io/crates/shakshuka)
+[![Docker Hub](https://img.shields.io/docker/v/raytung/shk?label=Docker%20Hub&sort=semver)](https://img.shields.io/docker/v/raytung/shk?label=Docker%20Hub&sort=semver)
 
 Shakshuka (`shk`) is a CLI tool for calculating content hash with SHA-256.
 
@@ -19,6 +20,12 @@ If you have the **Rust** toolchains installed, shakshuka can be installed with `
 
 ```shell
 $ cargo install shakshuka
+```
+
+If you have **Docker** installed, shakshuka can be installed and run with `docker`
+
+```shell
+$ docker run --rm --volume "${PWD}:/opt/work/" --workdir "/opt/work/" raytung/shk
 ```
 
 ## Example

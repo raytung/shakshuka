@@ -44,7 +44,16 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/shakshuka:${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/shk:${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}, ${{ secrets.DOCKER_HUB_USERNAME }}/shk
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Update repo description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          short-description: ${{ github.event.repository.description }}
+          repository: raytung/shk
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Image digest

@@ -5,7 +5,7 @@ use ignore::WalkBuilder;
 use sha2::{Digest, Sha256};
 
 #[derive(Parser, Debug)]
-#[clap(version = "0.1.0")]
+#[clap(version)]
 struct Opts {
     #[clap(short, long)]
     verbose: bool,

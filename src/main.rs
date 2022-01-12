@@ -48,7 +48,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!(
                 "{}  {}",
                 hash_str,
-                dir_entry.path().to_str().unwrap_or_else(|| ""),
+                dir_entry.path().to_str().unwrap_or(""),
             );
         }
 

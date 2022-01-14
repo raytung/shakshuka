@@ -18,6 +18,7 @@ jobs:
           release-type: rust
 
   publish-docker:
+    if: ${{ needs.release-please.outputs.release_created }}
     runs-on: ubuntu-latest
     needs: ['release-please']
     steps:
@@ -28,12 +29,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-        if: ${{ needs.release-please.outputs.release_created }}
 
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
-        if: ${{ needs.release-please.outputs.release_created }}
 
       - name: Build and push
         id: docker_build
@@ -43,7 +42,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/shk:${{needs.release-please.outputs.release_version}}, ${{ secrets.DOCKER_HUB_USERNAME }}/shk
-        if: ${{ needs.release-please.outputs.release_created }}
 
       - name: Update repo description
         uses: peter-evans/dockerhub-description@v2
@@ -52,12 +50,12 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           short-description: ${{ github.event.repository.description }}
           repository: raytung/shk
-        if: ${{ needs.release-please.outputs.release_created }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
   publish-cargo:
+    if: ${{ needs.release-please.outputs.release_created }}
     runs-on: ubuntu-latest
     needs: ['release-please']
     steps:
@@ -70,4 +68,3 @@ jobs:
       - run: cargo publish --token ${{ secrets.CRATES_TOKEN }}
         env:
           CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
-        if: ${{ needs.release-please.outputs.release_created }}

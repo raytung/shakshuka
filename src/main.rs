@@ -1,4 +1,5 @@
 use std::fs::read;
+use std::io::{stdout, Write};
 
 use clap::Parser;
 use ignore::WalkBuilder;
@@ -45,11 +46,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let hash_str = to_hex(hash.as_slice());
 
         if opt.verbose {
-            println!(
-                "{}  {}",
-                hash_str,
-                dir_entry.path().to_str().unwrap_or(""),
-            );
+            writeln!(stdout(), "{}  {}", hash_str, dir_entry.path().to_str().unwrap_or(""))?;
         }
 
         hashes.push(hash_str);
@@ -68,7 +65,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let final_hash = Sha256::digest(concatenated_hashes.as_bytes());
     let final_hash_str = to_hex(final_hash.as_slice());
 
-    println!("{}", final_hash_str);
+    writeln!(stdout(), "{}", final_hash_str)?;
 
     Ok(())
 }

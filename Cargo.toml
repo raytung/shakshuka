@@ -2,7 +2,7 @@
 name = "shakshuka"
 authors = ["Ray Tung <code@raytung.net>"]
 description = "Simple command line tool for calculating content hash. Supports .ignore (.contenthashignore) file"
-edition = "2018"
+edition = "2021"
 version = "0.2.0"
 license = "Apache-2.0"
 readme = "README.md"

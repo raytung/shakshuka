@@ -9,8 +9,17 @@ Shakshuka (`shk`) is a CLI tool for calculating content hash with SHA-256.
 ## Features
 
 - SHA-256 content hashing
-- Supports `.contenthashignore` file with `.gitignore` syntax
-- That's it
+- Supports `.contenthashignore` file with `.gitignore` syntax.
+  - Directories and files listed in `.contenthashignore` won't be included for calculating content hash
+
+## Use case
+
+This tool was built with repository management and artifact publishing in mind. Specifically, you may not want to trigger
+an infrastructure deployment, or may not want to publish a new artifact (say Docker container image) if you only updated
+content in a `README` file. With `shk`, you are able to tag your Docker image with the hash produced by `shk`, and skip
+Docker image build step on CI completely if an image with the same hash already exist.
+
+Do let me know if you have another use case for `shk`!
 
 ## Installation
 
